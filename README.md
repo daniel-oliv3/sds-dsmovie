@@ -1,7 +1,7 @@
 ## Spring React.
 
 ### 1 - Front-end estático.
-**Criar projeto, backend e frontend, salvar o projeto no Github em Monorepo, montar o visual estático do frontend**
+**Criar projeto, back-end e front-end, salvar o projeto no Github em monorepo, montar o visual estático do front-end**
 
 ## Ferramentas.
 **NodeJS.**
@@ -56,6 +56,52 @@ yarn create react-app frontend --template typescript
 ```
 npx create-react-app frontend --template typescript
 ```
+**IMPORTANTE:** deletar subpasta .git
+  - Lembrete: Ver extenções e arquivos ocultos
+
+
+**Roda o projeto ReactJS**
+```
+npm start
+```
+
+**ou**
+
+```
+yarn start
+```
+
+## Passo: criar o projeto Spring Boot.
+**Criar projeto Spring Boot no Spring Initializr com as seguintes depenências.**
+- Spring Initializr
+  - `Web`
+  - `JPA`
+  - `H2`
+  - `Postgres`
+  - `Security`
+
+## Spring Initializr.
+- Site - https://start.spring.io/
+
+
+**Ajuste no arquivo pom.xml**
+```xml
+ <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-resources-plugin</artifactId>
+	<version>3.1.0</version>
+ </plugin>
+```
+
+**- Botão direito no projeto -> Maven -> Update project (force update)**
+
+
+
+
+
+
+
+
 
 
 
