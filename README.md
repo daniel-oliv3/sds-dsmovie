@@ -144,6 +144,77 @@ a, a:hover {
 }
 ```
 
+- Arquivo index.tsx
+
+```tsx
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
+```
+
+## Passo: Componente Navbar.
+**ATENÇÃO: no arquivo tsconfig.json: "baseUrl": "./src" (reinicie o app)**
+
+```tsx
+<header>
+    <nav className="container">
+        <div className="dsmovie-nav-content">
+            <h1>DSMovie</h1>
+            <a href="https://github.com/devsuperior" target="_blank" rel="noreferrer">
+                <div className="dsmovie-contact-container">
+                    <GithubIcon />
+                    <p className="dsmovie-contact-link">/devsuperior</p>
+                </div>
+            </a>
+        </div>
+    </nav>
+</header>
+```
+
+```css
+header {
+    height: 60px;
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+}
+
+.dsmovie-nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.dsmovie-nav-content h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.dsmovie-contact-container {
+    display: flex;
+    align-items: center;
+}
+
+.dsmovie-contact-link {
+    margin: 0 0 0 10px;
+    font-size: 12px;
+}
+```
+
+## Passo: Rotas.
+```
+yarn add react-router-dom@6.2.1 @types/react-router-dom@5.3.2
+```
+
+
+
+
+
+
+
+
+
 
 
 
