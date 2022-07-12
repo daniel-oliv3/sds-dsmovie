@@ -19,7 +19,7 @@
 
 ## Passo: preparação.
 
-**Verificando instalação**
+**Verificando instalação no prompt de comando**
 ```
 node -v
 ```
@@ -40,8 +40,22 @@ https://www.figma.com/file/gEZYKqJJs2gEhIB6k9ksGB/DSMovie3
 https://www.figma.com/file/hyovBMIxwrn2Bb5MZLrxHL/DSMovie4
 ```
 
+## Passo: criar o projeto ReactJS.
 
+![DevSuperior no Instagram](https://raw.githubusercontent.com/devsuperior/bds-assets/main/sds/pastas-dsmovie.png)
 
+## ReactJS
+- Documentação: - https://pt-br.reactjs.org/docs/create-a-new-react-app.html
+
+```
+yarn create react-app frontend --template typescript
+```
+
+**ou**
+
+```
+npx create-react-app frontend --template typescript
+```
 
 
 
