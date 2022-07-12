@@ -207,8 +207,258 @@ header {
 yarn add react-router-dom@6.2.1 @types/react-router-dom@5.3.2
 ```
 
+```tsx
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Listing from 'pages/Listing';
+import Form from 'pages/Form';
+import Navbar from "components/Navbar";
 
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Listing />} />
+        <Route path="/form">
+          <Route path=":movieId" element={<Form />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
+export default App;
+```
+
+## Passo: Tela de formulário.
+```tsx
+const movie = {
+    id: 1,
+    image: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jBJWaqoSCiARWtfV0GlqHrcdidd.jpg",
+    title: "The Witcher",
+    count: 2,
+    score: 4.5
+};
+```
+
+```tsx
+<div className="dsmovie-form-container">
+    <img className="dsmovie-movie-card-image" src="url" alt="The Witcher" />
+    <div className="dsmovie-card-bottom-container">
+        <h3>"The Witcher"</h3>
+        <form className="dsmovie-form">
+            <div className="form-group dsmovie-form-group">
+                <label htmlFor="email">Informe seu email</label>
+                <input type="email" className="form-control" id="email" />
+            </div>
+            <div className="form-group dsmovie-form-group">
+                <label htmlFor="score">Informe sua avaliação</label>
+                <select className="form-control" id="score">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div className="dsmovie-form-btn-container">
+                <button type="submit" className="btn btn-primary dsmovie-btn">Salvar</button>
+            </div>
+        </form >
+        <button className="btn btn-primary dsmovie-btn mt-3">Cancelar</button>
+    </div >
+</div >
+```
+
+```css
+.dsmovie-form-container {
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.dsmovie-form {
+    width: calc(100% - 20px);
+}
+
+.dsmovie-form-group {
+    margin-bottom: 20px;
+}
+
+.dsmovie-form-group label {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.dsmovie-form-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.dsmovie-movie-card-image {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.dsmovie-card-bottom-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 20px 10px;
+    border-radius: 0 0 8px 8px;
+}
+
+.dsmovie-card-bottom-container h3 {
+    color: #4A4A4A;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    min-height: 40px;
+}
+
+.dsmovie-btn {
+    background-color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 700;
+    height: 40px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+```
+
+## Passo: Pagination.
+```tsx
+<div className="dsmovie-pagination-container">
+    <div className="dsmovie-pagination-box">
+        <button className="dsmovie-pagination-button" disabled={true} >
+            <Arrow />
+        </button>
+        <p>{`${1} de ${3}`}</p>
+        <button className="dsmovie-pagination-button" disabled={false} >
+            <Arrow className="dsmovie-flip-horizontal" />
+        </button>
+    </div>
+</div>
+```
+
+```css
+.dsmovie-pagination-container {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dsmovie-pagination-box {
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dsmovie-pagination-box form {
+    width: 100%;
+    display: flex;
+}
+
+.dsmovie-pagination-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-primary);
+    cursor: pointer;
+}
+
+.dsmovie-pagination-button svg {
+    filter: brightness(0) saturate(100%) invert(26%) sepia(19%) saturate(7395%) hue-rotate(234deg) brightness(89%) contrast(92%);
+}
+
+.dsmovie-pagination-button:disabled {
+    border: 1px solid #c2c2c2;
+    cursor: unset;
+}
+
+.dsmovie-pagination-button:disabled svg {
+    filter: none;
+}
+
+.dsmovie-pagination-container p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-primary);
+}
+
+.dsmovie-flip-horizontal {
+    transform: rotate(180deg);
+}
+```
+
+## Passo: MovieCard.
+**MovieStars**
+```tsx
+<div className="dsmovie-stars-container">
+  <StarFull />
+  <StarFull />
+  <StarFull />
+  <StarHalf />
+  <StarEmpty />
+</div>
+```
+
+```css
+.dsmovie-stars-container {
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dsmovie-stars-container svg {
+    width: 22px;
+    height: auto;
+}
+```
+
+**MovieScore**
+```tsx
+<div className="dsmovie-score-container">
+    <p className="dsmovie-score-value">{score > 0 ? score.toFixed(1) : '-'}</p>
+    <MovieStars />
+    <p className="dsmovie-score-count">{count} avaliações</p>
+</div>
+```
+
+```css
+.dsmovie-score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dsmovie-score-value {
+    margin: 0;
+    color: #FFBB3A;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dsmovie-score-count {
+    font-size: 12px;
+    color: #989898;
+    margin: 4px 0 10px 0;
+}
+```
 
 
 
